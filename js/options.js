@@ -11,4 +11,3 @@ $(document).ready(function(){
         chrome.extension.getBackgroundPage().setLR2ID(LR2ID);
     });
 });
-
