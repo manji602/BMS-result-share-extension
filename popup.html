@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html> 
+<head>
+<meta charset="utf-8">
+<meta name="twitter:widgets:csp" content="on">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/popup.js"></script>
+<script type="text/javascript" src="js/analytics.js"></script>
+<script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
+<link rel="stylesheet" type="text/css" href="css/popup.css" />
+<link rel="stylesheet" type="text/css" href="http://manji602.com/css/lib/bootstrap/css/bootstrap.min.css" media="screen">
+</head>
+<body>
+
+<div class="body-container">
+  <!-- header -->
+  <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+    <a class="brand" href="https://chrome.google.com/webstore/detail/bms-result-share/ikhjpmnccchehjphildhfonlifkcppkd" target="_blank">BMS Result Share</a>
+    </div>
+  </div>
+  <!--/ header -->
+
+  <!-- validation -->
+  <div id="error"></div>
+  <!--/ validation -->
+
+  <div id="main">
+    <div>
+      <div class="reload-area">
+        <img src="img/reload.png" id="reloadButton" width=30 height=30>
+        <img src="img/loading.gif" id="loadingAnimation" width=30 height=30 style="display:none;">
+      </div>
+    </div>
+    <div class="result-textarea">
+      <textarea class="span5" id="result" rows="2">右のリロードボタンで更新できます。</textarea>
+    </div>
+    <div class="share-buttonarea">
+      <div id="tweet-button"></div>
+    </div>
+  </div>
+  <div id="reload">
+  </div>
+
+</div>
+
+</body>
+</html>

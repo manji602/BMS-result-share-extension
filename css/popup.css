@@ -1,0 +1,24 @@
+body {
+    width: 455px;
+    height: 180px;
+    background-image: url(../img/background.jpg);
+}
+
+div.body-container {
+    padding: 5px 5px 2px 5px;
+}
+
+div.reload-area {
+    padding: 7px 8px 2px 8px;
+    float: right;
+}
+
+div.result-textarea {
+    padding: 2px 5px 2px 8px;
+    float: left;
+}
+
+div.share-buttonarea {
+    padding: 1px 8px;
+    clear: both;
+}
