@@ -1,6 +1,6 @@
 {
     "name": "BMS Result Share",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "manifest_version": 2,
     "content_security_policy": "script-src 'self' 'unsafe-eval' https://platform.twitter.com/widgets.js; object-src 'self'",
     "description": "LR2IRに登録されたBMSの曲の最新のプレーリザルトをTwitterに簡単に投稿できる拡張機能です。",

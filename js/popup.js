@@ -10,6 +10,11 @@ $('body').ready(function(){
         }
     });
 
+    $('#resultText').keyup(function(){
+        var currentText = $('#resultText').val();
+        setBody(currentText);
+    });
+
     setResultLoop();
 });
 
@@ -38,7 +43,7 @@ var reloadResult = function() {
 };
 
 var showLoading = function() {
-    $('#result').html('now loading...');
+    $('#resultText').html('now loading...');
     $('#reloadButton').hide();
     $('#loadingAnimation').show();
 };
@@ -77,28 +82,33 @@ var setResult = function(msec) {
         var localStorageKey  = chrome.extension.getBackgroundPage().LATEST_RESULT_KEY_OF.shareText;
         latestSongTitle      = localStorage[localStorageKey];
 
-        var twitterShareHTML = '<a href="https://twitter.com/share" class="twitter-share-button" data-url="" data-text="' +
-                               latestSongTitle +
-                               '" data-via="" data-lang="ja" data-count="none" data-hashtags="iidx">ツイート</a>';
-
         if (latestSongTitle) {
-            $('#result').html(latestSongTitle);
-            $('#tweet-button').html(twitterShareHTML);
+            setBody(latestSongTitle);
         } else {
-            $('#result').html('リザルトを取得できませんでした。もう一度更新するか、idの設定が誤っていないか確認してください。');
-            $('#tweet-button').html();
-        }
-
-        try {
-            twttr.widgets.load();
-        } catch( error ) {
-            console.log(error);
+            var error = 'リザルトを取得できませんでした。もう一度更新するか、idの設定が誤っていないか確認してください。';
+            setBody(error);
         }
 
         d.resolve();
     }, msec);
 
     return d;
+};
+
+var setBody = function(body) {
+    var twitterShareHTML = '<a href="https://twitter.com/share" class="twitter-share-button" data-url="" data-text="' +
+                           body +
+                           '" data-via="" data-lang="ja" data-count="none" data-hashtags="LR2">ツイート</a>';
+
+    $('#resultText').html(body);
+    $('#tweet-button').html(twitterShareHTML);
+
+    // twitter widget reload
+    try {
+        twttr.widgets.load();
+    } catch( error ) {
+        console.log(error);
+    }
 };
 
 var showError = function() {
@@ -108,6 +118,7 @@ var showError = function() {
 
 var setResultLoop = function() {
     var background = chrome.extension.getBackgroundPage();
+
     if ( background.hasLR2ID() ) {
         if ( background.hasResult() ) {
             setResult();
@@ -115,6 +126,5 @@ var setResultLoop = function() {
     } else {
         showError();
     }
-
     setTimeout('setResultLoop()', SET_TIME_OUT_MSEC_LOOP);
 };
