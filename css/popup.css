@@ -18,6 +18,10 @@ div.result-textarea {
     float: left;
 }
 
+textarea.text {
+    width: 380px;
+}
+
 div.share-buttonarea {
     padding: 1px 8px;
     clear: both;
