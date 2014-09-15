@@ -9,7 +9,8 @@ var LATEST_RESULT_KEY_OF = {
 var DIFFICULTY_SYMBOL_OF = {
     Insane    : '★',
     LN        : '◆',
-    Insane2nd : '▼'
+    Insane2nd : '▼',
+    Scratch   : '◎'
 };
 var GET_RESULT_INTERVAL = 1000 * 120; // 2 minutes;
 var INITIAL_LR2_ID      = 0;
@@ -94,7 +95,7 @@ var getLatestSongDetail = function(response) {
         localStorage[LATEST_RESULT_KEY_OF.title] + ' ' +
         localStorage[LATEST_RESULT_KEY_OF.status];
 
-    localStorage[LATEST_RESULT_KEY_OF.shareText] = shareText;
+    localStorage[LATEST_RESULT_KEY_OF.shareText] = escapeCharacters(shareText);
 };
 
 var getDifficulty = function(response) {
@@ -108,7 +109,8 @@ var getDifficultyCategory = function() {
     var difficultySymbols = [
         DIFFICULTY_SYMBOL_OF.Insane,
         DIFFICULTY_SYMBOL_OF.LN,
-        DIFFICULTY_SYMBOL_OF.Insane2nd
+        DIFFICULTY_SYMBOL_OF.Insane2nd,
+        DIFFICULTY_SYMBOL_OF.Scratch,
     ];
     return new RegExp(difficultySymbols.join('|'));
 };
@@ -153,4 +155,8 @@ var convertToTwoByteCharacter = function(string) {
     });
 
     return convertedString;
+};
+
+var escapeCharacters = function(string) {
+    return string.replace(/["]/g, '&quot;' );
 };
